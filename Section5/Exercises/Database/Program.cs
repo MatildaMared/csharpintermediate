@@ -1,17 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var sqlConnection = new SqlConnection("abc123");
+var oracleConnection = new OracleConnection("cde456");
 
-public class DbConnection
-{
-    public string ConnectionString { get; set; }
-    public TimeSpan Timeout { get; set; }
+sqlConnection.OpenConnection();
+sqlConnection.CloseConnection();
+Console.WriteLine(sqlConnection.ConnectionString);
 
-    public DbConnection(string connectionString)
-    {
-        if (string.IsNullOrWhiteSpace(connectionString))
-        {
-            throw new ArgumentException("Connection string cannot be null or empty");
-        }
-        this.ConnectionString = connectionString;
-    }
-}
+oracleConnection.OpenConnection();
+oracleConnection.CloseConnection();
+Console.WriteLine(oracleConnection.ConnectionString);
